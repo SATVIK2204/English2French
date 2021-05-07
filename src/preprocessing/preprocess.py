@@ -12,16 +12,34 @@ class DfCleaner:
     def __init__(self):
         pass
 
+    def __remove(self, text, cnt, frequent, n_freq, rare, n_rare):
+
+        FREQWORDS = set([w for (w, wc) in cnt.most_common(n_freq)])
+        RAREWORDS = set([w for (w, wc) in cnt.most_common()[: -n_rare - 1 : -1]])
+        if frequent:
+            text = " ".join(
+                [word for word in str(text).split() if word not in FREQWORDS]
+            )
+        if rare:
+            text = " ".join(
+                [word for word in str(text).split() if word not in RAREWORDS]
+            )
+
+        return text
+
     # Remove the most frequent words
-    def remove_frequent_rare(self, lines, frequent=False, n_freq=10, rare=False, n_rare=10):
+    def remove_frequent_rare(
+        self, lines, frequent=False, n_freq=10, rare=False, n_rare=10
+    ):
         cnt = Counter()
         for line in lines:
             for word in line.split():
                 cnt[word] += 1
-        if frequent:
-            FREQWORDS = set([w for (w, wc) in cnt.most_common(10)])
-            for line in lines:
-                
+        new_line = []
+        for line in lines:
+            new_line.append(self.__remove(line, cnt, frequent, n_freq, rare, n_rare))
+
+        return new_line
 
     # Performs Various operations to clean the text
 
@@ -48,7 +66,6 @@ class DfCleaner:
         # Stemming the text
         if stem:
             stemmer = PorterStemmer()
-            text = text.split()
             text = [stemmer.stem(word) for word in text.split()]
             text = " ".join(text)
 
@@ -73,9 +90,17 @@ class DfCleaner:
 
     def clean(self, lines, remove_stopwords=True, stem=True, lemmitize=True):
         cleaned_lines = []
+        length = len(lines)
+        i = 0
         for line in lines:
+            
             cleaned_lines.append(
                 self.__clean_text(line, remove_stopwords, stem, lemmitize)
             )
+            i = i + 1
+            if i % 10000 == 0:
+                print(f"{i} examples cleaned out of {length}")
+            if i==length:
+                print('Cleaning Done')
 
         return cleaned_lines
