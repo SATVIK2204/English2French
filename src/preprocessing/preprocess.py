@@ -35,9 +35,17 @@ class DfCleaner:
         for line in lines:
             for word in line.split():
                 cnt[word] += 1
+        length=len(lines)
+        i=0
         new_line = []
         for line in lines:
             new_line.append(self.__remove(line, cnt, frequent, n_freq, rare, n_rare))
+            i = i + 1
+            if i % 1000 == 0:
+                print(f"{i} examples cleaned out of {length}")
+            if i==length:
+                print('Cleaning Done')
+
 
         return new_line
 
