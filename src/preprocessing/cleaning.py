@@ -41,7 +41,7 @@ class DfCleaner:
         for line in lines:
             new_line.append(self.__remove(line, cnt, frequent, n_freq, rare, n_rare))
             i = i + 1
-            if i % 1000 == 0:
+            if i % 10000 == 0:
                 print(f"{i} examples cleaned out of {length}")
             if i==length:
                 print('Cleaning Done')
