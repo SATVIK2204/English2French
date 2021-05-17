@@ -1,4 +1,4 @@
-English2French-Machine-Translator
+English2French
 ==============================
 
 ## English to French using Sequence-to-Sequence Model with Attention.
