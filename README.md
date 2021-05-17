@@ -1,7 +1,7 @@
 English2French-Machine-Translator
 ==============================
 
-# English to French using Sequence-to-Sequence Model with Attention.
+## English to French using Sequence-to-Sequence Model with Attention.
 It is a project to perform machine translation(English to french) using Seq2Seq model with Attention. The project uses modularized implementation of the same using pytorch.
 
 
