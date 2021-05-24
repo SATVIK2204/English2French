@@ -15,14 +15,14 @@ I have not included pytorch package in the requirements.txt, so please install t
 - First of all remove the data present in `models/interim` folder.
 - Now open the notebook name `1.english2french.ipynb` present in notebooks folder.
 - Now run the cells and follow the comments in it.
-- You can do the respective imported module path to see its implementatiomn.
+- You can see the respective source modules to see their implementation.
 
 ## Future Works
 Working on the deployment of the project to take user's input and ouput the respective translation.
 
 
 ## Contributing
-As this project is still under, it would be much appericated if you submit a PR for cleanups, error-fixing, or adding new (relevant) content.
+As this project is still under work, it would be much appericated if you submit a PR for cleanups, error-fixing, or adding new (relevant) content.
 
 
 --------
