@@ -18,7 +18,7 @@ I have not included pytorch package in the requirements.txt, so please install t
 - You can do the respective imported module path to see its implementatiomn.
 
 ## Future Works
-Working on the web implementation of the project to take anu user input and ouput the respective translation.
+Working on the deployment of the project to take user's input and ouput the respective translation.
 
 
 ## Contributing
